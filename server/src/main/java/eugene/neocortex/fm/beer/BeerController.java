@@ -1,8 +1,6 @@
 package eugene.neocortex.fm.beer;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -30,4 +28,29 @@ public class BeerController {
                 !beer.getName().equals("Coors Light") &&
                 !beer.getName().equals("PBR");
     }
+
+    @GetMapping("/all")
+    public Collection<Beer> allBears() {
+        return repository.findAll();
+    }
+
+    @RequestMapping(value="/one/{id}")
+    @ResponseBody
+    public Beer oneBeer(@PathVariable("id") long id){
+        return repository.findOne(id);
+    }
+
+    @RequestMapping(value="/set/{id}/{name}")
+    @ResponseBody
+    public Beer setBeerName(@PathVariable("id") long id, @PathVariable("name") String newName){
+//        repository.findOne(id).setName(name);
+
+        Beer beerToUpdate = repository.getOne(id);
+        beerToUpdate.setName(newName);
+        repository.save(beerToUpdate);
+
+        System.out.println(repository.findOne(id) + "name has been changed to " + newName);
+        return repository.findOne(id);
+    }
+
 }

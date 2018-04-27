@@ -1,16 +1,21 @@
 package eugene.neocortex.fm.beer;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.boot.autoconfigure.web.ResourceProperties;
+
+import javax.persistence.*;
 
 //class will be the entity that holds your data.
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Beer {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "ID")
     private Long id;
+
+    @Column(name = "NAME")
     private String name;
 
     public Beer() {
