@@ -6,6 +6,20 @@ import org.springframework.stereotype.Component;
 import java.util.stream.Stream;
 
 //uses this repository and creates a default set of data.
+
+/*
+ * CommandLineRunner - Interface used to indicate that a bean should run when it is contained
+ * within a SpringApplication.
+ * Multiple CommandLineRunner beans can be defined within the same application context
+ * and can be ordered using the Ordered interface or @Order annotation.
+ *
+ * Переоперделяем метод run для имплементации CommandLineRunner
+ * и он запоняет базу H2 в памяти значениями
+ *
+ * Бин не обязательно помечать аннотацией autowired потому что есть
+ * Констурктор  BeerCommandLineRunner(BeerRepository repository) и начиная со Spring 3
+ * он автоматом инжектится
+ */
 @Component
 public class BeerCommandLineRunner implements CommandLineRunner {
 
