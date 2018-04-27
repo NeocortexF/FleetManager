@@ -1,7 +1,6 @@
 package eugene.neocortex.fm.beer;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
 
 import javax.persistence.*;
 
