@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+//class will be the entity that holds your data.
 @Entity
 public class Beer {
 

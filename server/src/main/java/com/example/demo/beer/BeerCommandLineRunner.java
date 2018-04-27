@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.stream.Stream;
 
+//uses this repository and creates a default set of data.
 @Component
 public class BeerCommandLineRunner implements CommandLineRunner {
 
