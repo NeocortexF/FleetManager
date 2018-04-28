@@ -1,4 +1,4 @@
-package eugene.neocortex.fm.sequencer.models;
+package eugene.neocortex.fm.sequencer.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

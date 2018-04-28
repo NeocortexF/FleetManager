@@ -1,7 +1,7 @@
 package eugene.neocortex.fm.sequencer;
 
 
-import eugene.neocortex.fm.sequencer.models.OneDeadline;
+import eugene.neocortex.fm.sequencer.model.OneDeadline;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

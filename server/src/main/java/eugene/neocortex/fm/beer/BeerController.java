@@ -15,7 +15,7 @@ public class BeerController {
     }
 
     //тут http://localhost:8080/good-beers front будет ловить данные отсюда
-    @GetMapping("/good-beers")
+    @GetMapping("beer/good-beers")  //если взорвется то вернуть на мапинг /good-beers
     @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5000"})
     public Collection<Beer> goodBeers() {
         return repository.findAll().stream()
@@ -29,18 +29,18 @@ public class BeerController {
                 !beer.getName().equals("PBR");
     }
 
-    @GetMapping("/all")
+    @GetMapping("beer/all")
     public Collection<Beer> allBears() {
         return repository.findAll();
     }
 
-    @RequestMapping(value = "/one/{id}")
+    @RequestMapping(value = "beer/one/{id}")
     @ResponseBody
     public Beer oneBeer(@PathVariable("id") long id) {
         return repository.findOne(id);
     }
 
-    @RequestMapping(value = "/update/{id}/{name}")
+    @RequestMapping(value = "beer/update/{id}/{name}")
     @ResponseBody
     public Beer setBeerName(@PathVariable("id") long id, @PathVariable("name") String newName) {
         if (newName != null) {
@@ -51,7 +51,7 @@ public class BeerController {
         return repository.findOne(id);
     }
 
-    @RequestMapping(value = "/delete/{id}")
+    @RequestMapping(value = "beer/delete/{id}")
     @ResponseBody
     public boolean removeBeer(@PathVariable("id") long id) {
         if (repository.exists(id)) {
@@ -62,7 +62,7 @@ public class BeerController {
         }
     }
 
-    @RequestMapping(value = "add/{name}")
+    @RequestMapping(value = "beer/add/{name}")
     @ResponseBody
     public String addBeer(@PathVariable("name") String name) {
         if (name != null && !name.isEmpty()){
