@@ -20,41 +20,26 @@ public class DeadlineController {
         this.repository = repository;
     }
 
-    @GetMapping("deadlines/all")
+    @GetMapping("deadline/all")
     public Collection<Deadlines> allDeadlines() {
         return repository.findAll();
     }
 
-    @RequestMapping(value = "deadlines/byId/{id}")
+    @RequestMapping(value = "deadline/byId/{id}")
     @ResponseBody
     public Deadlines oneDeadlines(@PathVariable("id") long id) {
         return repository.findOne(id);
     }
-//
-//    @RequestMapping(value = "deadlines/update/{id}/{key}")
-//    @ResponseBody
-//    public Deadlines setBeerName(@PathVariable("id") long id, @PathVariable("key") String newName) {
-//
-//        Deadlines deadlinesToUpdate = repository.getOne(id);
-//        deadlinesToUpdate.setName(newName);
-//        repository.save(deadlinesToUpdate);
-//
-//        return repository.findOne(id);
-//    }
 
-    @PostMapping(value = "/deadlines/save")
+
+    @PostMapping(value = "deadline/save")
     public ResponseEntity createCustomer(@RequestBody Deadlines deadlines) {
-
         repository.save(deadlines);
-
         return new ResponseEntity(deadlines, HttpStatus.OK);
     }
 
 
-
-
-
-    @RequestMapping(value = "beer/delete/{id}")
+    @RequestMapping(value = "deadline/delete/{id}")
     @ResponseBody
     public boolean removeBeer(@PathVariable("id") long id) {
         if (repository.exists(id)) {
@@ -65,16 +50,16 @@ public class DeadlineController {
         }
     }
 
-    @RequestMapping(value = "beer/add/{name}")
-    @ResponseBody
-    public String addBeer(@PathVariable("name") String name) {
-        if (name != null && !name.isEmpty()) {
-            Deadlines beerToSave = new Deadlines();
-            beerToSave.setName(name);
-            repository.save(beerToSave);
-            return beerToSave.toString();
-        } else {
-            return "Please enter the name of beer";
-        }
-    }
+//    @RequestMapping(value = "beer/add/{name}")
+//    @ResponseBody
+//    public String addBeer(@PathVariable("name") String name) {
+//        if (name != null && !name.isEmpty()) {
+//            Deadlines beerToSave = new Deadlines();
+//            beerToSave.setName(name);
+//            repository.save(beerToSave);
+//            return beerToSave.toString();
+//        } else {
+//            return "Please enter the name of beer";
+//        }
+//    }
 }
