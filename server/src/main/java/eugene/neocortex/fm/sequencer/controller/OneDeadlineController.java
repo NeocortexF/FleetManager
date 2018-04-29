@@ -30,7 +30,7 @@ public class OneDeadlineController {
 
     @RequestMapping(value = "dl/update/{id}/{tailNumber}/{deadline}/{description}")
     @ResponseBody
-    public OneDeadline updateAircraftById(@PathVariable("id") long id,
+    public OneDeadline updateDeadlineById(@PathVariable("id") long id,
                                     @PathVariable("tailNumber") String tailNumber,
                                     @PathVariable("deadline") Date deadline,
                                     @PathVariable("description") String description) {
@@ -47,7 +47,7 @@ public class OneDeadlineController {
 
     @RequestMapping(value = "dl/delete/{id}")
     @ResponseBody
-    public boolean removeAircraft(@PathVariable("id") long id) {
+    public boolean removeDeadline(@PathVariable("id") long id) {
         if (repository.exists(id)) {
             repository.delete(id);
             return true;
@@ -59,7 +59,7 @@ public class OneDeadlineController {
 
     @RequestMapping(value = "dl/add/{tailNumber}/{deadline}/{description}")
     @ResponseBody
-    public Boolean addAircraft(@PathVariable("tailNumber") String tailNumber,
+    public Boolean addDeadline(@PathVariable("tailNumber") String tailNumber,
                                @PathVariable("deadline") Date deadline,
                                @PathVariable("description") String description) {
 
