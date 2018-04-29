@@ -5,10 +5,7 @@ import eugene.neocortex.fm.sequencer.DeadlinesRepository;
 import eugene.neocortex.fm.sequencer.model.Deadlines;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Collection;
 

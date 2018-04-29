@@ -36,12 +36,12 @@ public class FleetController {
                                     @PathVariable("engineType") String engineType,
                                     @PathVariable("msn") Integer msn) {
 
-            Fleet aircraftToUpdate = repository.getOne(id);
-            aircraftToUpdate.setTailNumber(tailNumber);
-            aircraftToUpdate.setModification(modification);
-            aircraftToUpdate.setEngineType(engineType);
-            aircraftToUpdate.setMsn(msn);
-            repository.save(aircraftToUpdate);
+        Fleet aircraftToUpdate = repository.getOne(id);
+        aircraftToUpdate.setTailNumber(tailNumber);
+        aircraftToUpdate.setModification(modification);
+        aircraftToUpdate.setEngineType(engineType);
+        aircraftToUpdate.setMsn(msn);
+        repository.save(aircraftToUpdate);
 
         return repository.findOne(id);
     }
@@ -62,11 +62,11 @@ public class FleetController {
     @RequestMapping(value = "fleet/add/{tailNumber}/{modification}/{engineType}/{msn}")
     @ResponseBody
     public Boolean addAircraft(@PathVariable("tailNumber") String tailNumber,
-                          @PathVariable("modification") String modification,
-                          @PathVariable("engineType") String engineType,
-                          @PathVariable("msn") Integer msn) {
+                               @PathVariable("modification") String modification,
+                               @PathVariable("engineType") String engineType,
+                               @PathVariable("msn") Integer msn) {
 
-        if (tailNumber != null && !tailNumber.isEmpty()){
+        if (tailNumber != null && !tailNumber.isEmpty()) {
             Fleet aircraftToSave = new Fleet();
             aircraftToSave.setTailNumber(tailNumber);
             aircraftToSave.setModification(modification);

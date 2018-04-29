@@ -31,9 +31,9 @@ public class OneDeadlineController {
     @RequestMapping(value = "dl/update/{id}/{tailNumber}/{deadline}/{description}")
     @ResponseBody
     public OneDeadline updateDeadlineById(@PathVariable("id") long id,
-                                    @PathVariable("tailNumber") String tailNumber,
-                                    @PathVariable("deadline") Date deadline,
-                                    @PathVariable("description") String description) {
+                                          @PathVariable("tailNumber") String tailNumber,
+                                          @PathVariable("deadline") Date deadline,
+                                          @PathVariable("description") String description) {
 
         OneDeadline deadlineToUpdate = repository.getOne(id);
         deadlineToUpdate.setTailNumber(tailNumber);
@@ -63,7 +63,7 @@ public class OneDeadlineController {
                                @PathVariable("deadline") Date deadline,
                                @PathVariable("description") String description) {
 
-        if (tailNumber != null && !tailNumber.isEmpty()){
+        if (tailNumber != null && !tailNumber.isEmpty()) {
             OneDeadline deadlineToSave = new OneDeadline();
             deadlineToSave.setTailNumber(tailNumber);
             deadlineToSave.setDeadline(deadline);

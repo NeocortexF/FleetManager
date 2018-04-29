@@ -65,7 +65,7 @@ public class BeerController {
     @RequestMapping(value = "beer/add/{name}")
     @ResponseBody
     public String addBeer(@PathVariable("name") String name) {
-        if (name != null && !name.isEmpty()){
+        if (name != null && !name.isEmpty()) {
             Beer beerToSave = new Beer();
             beerToSave.setName(name);
             repository.save(beerToSave);
