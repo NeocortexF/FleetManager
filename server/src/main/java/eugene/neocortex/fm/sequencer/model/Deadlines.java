@@ -23,7 +23,7 @@ public class Deadlines {
 
     private String tailNumber;
 
-    @OneToMany(mappedBy = "Deadlines")
+    //@OneToMany(mappedBy = "Deadlines")
     private ArrayList<OneDeadline> deadlineList;
 
     private Date latestCcheckDate;

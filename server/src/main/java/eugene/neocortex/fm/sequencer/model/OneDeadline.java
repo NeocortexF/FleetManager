@@ -1,15 +1,23 @@
 package eugene.neocortex.fm.sequencer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.Entity;
 import java.util.Date;
 
 /**
  * Модель данных для одного дедлайна,
  * что бы передавать объект в спискок дедлайнов
+ * Перечень дедлайнов для одного борта
  */
 
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class OneDeadline {
 
     private long id;
+
+    private String tailNumber;
 
     private Date deadline;
 
@@ -18,9 +26,10 @@ public class OneDeadline {
     public OneDeadline() {
     }
 
-    public OneDeadline(Date deadline, String description) {
+    public OneDeadline(Date deadline, String description, String tailNumber) {
         this.deadline = deadline;
         this.description = description;
+        this.tailNumber = tailNumber;
     }
 
     public long getId() {
@@ -47,10 +56,19 @@ public class OneDeadline {
         this.description = description;
     }
 
+    public String getTailNumber() {
+        return tailNumber;
+    }
+
+    public void setTailNumber(String tailNumber) {
+        this.tailNumber = tailNumber;
+    }
+
     @Override
     public String toString() {
         return "OneDeadline{" +
                 "id=" + id +
+                ", tailNumber='" + tailNumber + '\'' +
                 ", deadline=" + deadline +
                 ", description='" + description + '\'' +
                 '}';
