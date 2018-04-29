@@ -21,19 +21,19 @@ public class DeadlineController {
     }
 
     @GetMapping("deadline/all")
-    public Collection<Deadlines> allDeadlines() {
+    public Collection<Deadlines> getAllDeadlines() {
         return repository.findAll();
     }
 
     @RequestMapping(value = "deadline/byId/{id}")
     @ResponseBody
-    public Deadlines oneDeadlines(@PathVariable("id") long id) {
+    public Deadlines findDeadlineById(@PathVariable("id") long id) {
         return repository.findOne(id);
     }
 
 
     @PostMapping(value = "deadline/save")
-    public ResponseEntity createCustomer(@RequestBody Deadlines deadlines) {
+    public ResponseEntity createDeadline(@RequestBody Deadlines deadlines) {
         repository.save(deadlines);
         return new ResponseEntity(deadlines, HttpStatus.OK);
     }
@@ -41,7 +41,7 @@ public class DeadlineController {
 
     @RequestMapping(value = "deadline/delete/{id}")
     @ResponseBody
-    public boolean removeBeer(@PathVariable("id") long id) {
+    public boolean removeDeadlineById(@PathVariable("id") long id) {
         if (repository.exists(id)) {
             repository.delete(id);
             return true;
