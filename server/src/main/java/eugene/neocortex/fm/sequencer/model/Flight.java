@@ -39,14 +39,14 @@ public class Flight {
 
     private String remarks;
 
-    private ArrayList<Deadlines> allChecksAndDeadlinesForThisAircraft;
+    private ArrayList<Checks> allChecksAndDeadlinesForThisAircraft;
 
     public Flight() {
     }
 
     public Flight(String tailNumber, Date departure, Date arrival, ArrayList<String> pilots,
                   ArrayList<String> cabinCrew, ArrayList<String> passengers,
-                  String remarks, ArrayList<Deadlines> allChecksAndDeadlinesForThisAircraft) {
+                  String remarks, ArrayList<Checks> allChecksAndDeadlinesForThisAircraft) {
         this.tailNumber = tailNumber;
         this.departure = departure;
         this.arrival = arrival;
@@ -121,11 +121,11 @@ public class Flight {
         this.remarks = remarks;
     }
 
-    public ArrayList<Deadlines> getAllChecksAndDeadlinesForThisAircraft() {
+    public ArrayList<Checks> getAllChecksAndDeadlinesForThisAircraft() {
         return allChecksAndDeadlinesForThisAircraft;
     }
 
-    public void setAllChecksAndDeadlinesForThisAircraft(ArrayList<Deadlines> allChecksAndDeadlinesForThisAircraft) {
+    public void setAllChecksAndDeadlinesForThisAircraft(ArrayList<Checks> allChecksAndDeadlinesForThisAircraft) {
         this.allChecksAndDeadlinesForThisAircraft = allChecksAndDeadlinesForThisAircraft;
     }
 

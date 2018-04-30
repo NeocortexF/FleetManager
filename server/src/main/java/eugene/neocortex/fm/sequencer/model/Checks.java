@@ -14,7 +14,7 @@ import java.util.Date;
  */
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Deadlines {
+public class Checks {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -40,14 +40,13 @@ public class Deadlines {
 
     private int latestWeeklyCheckFlightCycles;
 
-    public Deadlines() {
+    public Checks() {
     }
 
-    public Deadlines(String tailNumber, Date latestCcheckDate, int latestCcheckFlightHours,
-                     int latestCcheckFlightCycles, Date latestAcheckDate,
-                     int lastestAcheckFlightHours, int lastetAcheckFlightCycles,
-                     Date latestWeeklyCheckDate, int lastestWeeklyCheckFlightHours,
-                     int latestWeeklyCheckFlightCycles) {
+    public Checks(String tailNumber, Date latestCcheckDate, int latestCcheckFlightHours,
+                  int latestCcheckFlightCycles, Date latestAcheckDate,
+                  int lastestAcheckFlightHours, int lastetAcheckFlightCycles,
+                  Date latestWeeklyCheckDate, int lastestWeeklyCheckFlightHours, int latestWeeklyCheckFlightCycles) {
         this.tailNumber = tailNumber;
         this.latestCcheckDate = latestCcheckDate;
         this.latestCcheckFlightHours = latestCcheckFlightHours;
@@ -150,7 +149,7 @@ public class Deadlines {
 
     @Override
     public String toString() {
-        return "Deadlines{" +
+        return "Checks{" +
                 "id=" + id +
                 ", tailNumber='" + tailNumber + '\'' +
                 ", latestCcheckDate=" + latestCcheckDate +

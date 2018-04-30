@@ -9,6 +9,5 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface OneDeadlineRepository extends JpaRepository<OneDeadline, Long> {
-
     List<OneDeadline> findByTailNumber(String tailNumber);
 }
