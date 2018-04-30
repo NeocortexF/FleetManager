@@ -35,7 +35,7 @@ public class Flight {
 
     private ArrayList<String> cabinCrew;
 
-    private ArrayList<String> passangers;
+    private ArrayList<String> passengers;
 
     private String remarks;
 
@@ -45,14 +45,14 @@ public class Flight {
     }
 
     public Flight(String tailNumber, Date departure, Date arrival, ArrayList<String> pilots,
-                  ArrayList<String> cabinCrew, ArrayList<String> passangers,
+                  ArrayList<String> cabinCrew, ArrayList<String> passengers,
                   String remarks, ArrayList<Deadlines> allChecksAndDeadlinesForThisAircraft) {
         this.tailNumber = tailNumber;
         this.departure = departure;
         this.arrival = arrival;
         this.pilots = pilots;
         this.cabinCrew = cabinCrew;
-        this.passangers = passangers;
+        this.passengers = passengers;
         this.remarks = remarks;
         this.allChecksAndDeadlinesForThisAircraft = allChecksAndDeadlinesForThisAircraft;
     }
@@ -105,12 +105,12 @@ public class Flight {
         this.cabinCrew = cabinCrew;
     }
 
-    public ArrayList<String> getPassangers() {
-        return passangers;
+    public ArrayList<String> getPassengers() {
+        return passengers;
     }
 
-    public void setPassangers(ArrayList<String> passangers) {
-        this.passangers = passangers;
+    public void setPassengers(ArrayList<String> passengers) {
+        this.passengers = passengers;
     }
 
     public String getRemarks() {
@@ -138,7 +138,7 @@ public class Flight {
                 ", arrival=" + arrival +
                 ", pilots=" + pilots +
                 ", cabinCrew=" + cabinCrew +
-                ", passangers=" + passangers +
+                ", passengers=" + passengers +
                 ", remarks='" + remarks + '\'' +
                 ", allChecksAndDeadlinesForThisAircraft=" + allChecksAndDeadlinesForThisAircraft +
                 '}';

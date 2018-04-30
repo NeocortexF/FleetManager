@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -22,9 +21,6 @@ public class Deadlines {
     private long id;
 
     private String tailNumber;
-
-    //@OneToMany(mappedBy = "Deadlines")
-    private ArrayList<OneDeadline> deadlineList;
 
     private Date latestCcheckDate;
 
@@ -47,12 +43,12 @@ public class Deadlines {
     public Deadlines() {
     }
 
-    public Deadlines(long key, String tailNumber, ArrayList<OneDeadline> deadlineList,
-                     Date latestCcheckDate, int latestCcheckFlightHours, int latestCcheckFlightCycles,
-                     Date latestAcheckDate, int lastestAcheckFlightHours, int lastetAcheckFlightCycles,
-                     Date latestWeeklyCheckDate, int lastestWeeklyCheckFlightHours, int latestWeeklyCheckFlightCycles) {
+    public Deadlines(String tailNumber, Date latestCcheckDate, int latestCcheckFlightHours,
+                     int latestCcheckFlightCycles, Date latestAcheckDate,
+                     int lastestAcheckFlightHours, int lastetAcheckFlightCycles,
+                     Date latestWeeklyCheckDate, int lastestWeeklyCheckFlightHours,
+                     int latestWeeklyCheckFlightCycles) {
         this.tailNumber = tailNumber;
-        this.deadlineList = deadlineList;
         this.latestCcheckDate = latestCcheckDate;
         this.latestCcheckFlightHours = latestCcheckFlightHours;
         this.latestCcheckFlightCycles = latestCcheckFlightCycles;
@@ -78,14 +74,6 @@ public class Deadlines {
 
     public void setTailNumber(String tailNumber) {
         this.tailNumber = tailNumber;
-    }
-
-    public ArrayList<OneDeadline> getDeadlineList() {
-        return deadlineList;
-    }
-
-    public void setDeadlineList(ArrayList<OneDeadline> deadlineList) {
-        this.deadlineList = deadlineList;
     }
 
     public Date getLatestCcheckDate() {
@@ -165,7 +153,6 @@ public class Deadlines {
         return "Deadlines{" +
                 "id=" + id +
                 ", tailNumber='" + tailNumber + '\'' +
-                ", deadlineList=" + deadlineList +
                 ", latestCcheckDate=" + latestCcheckDate +
                 ", latestCcheckFlightHours=" + latestCcheckFlightHours +
                 ", latestCcheckFlightCycles=" + latestCcheckFlightCycles +
