@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 public class OneDeadlineController {
@@ -29,11 +30,20 @@ public class OneDeadlineController {
     }
 
 
+    @RequestMapping(value = "dl/byAC/{tailNumber}")
+    @ResponseBody
+    public List<OneDeadline> findAllDeadlinesByAircraftTailNumber(
+            @PathVariable("tailNumber") String tailNumber) {
+
+        return repository.findByTailNumber(tailNumber);
+    }
+
+
     @RequestMapping(value = "dl/update/{id}/{tailNumber}/{deadline}/{description}")
     @ResponseBody
     public OneDeadline updateDeadlineById(@PathVariable("id") long id,
                                           @PathVariable("tailNumber") String tailNumber,
-                                          @PathVariable("deadline") @DateTimeFormat(pattern="dd-MM-yyyy") Date deadline,
+                                          @PathVariable("deadline") @DateTimeFormat(pattern = "dd-MM-yyyy") Date deadline,
                                           @PathVariable("description") String description) {
 
         OneDeadline deadlineToUpdate = repository.getOne(id);
@@ -61,7 +71,7 @@ public class OneDeadlineController {
     @RequestMapping(value = "dl/add/{tailNumber}/{deadline}/{description}")
     @ResponseBody
     public Boolean addDeadline(@PathVariable("tailNumber") String tailNumber,
-                               @PathVariable("deadline") @DateTimeFormat(pattern="dd-MM-yyyy") Date deadline,
+                               @PathVariable("deadline") @DateTimeFormat(pattern = "dd-MM-yyyy") Date deadline,
                                @PathVariable("description") String description) {
 
         if (tailNumber != null && !tailNumber.isEmpty()) {
