@@ -1,7 +1,7 @@
 package eugene.neocortex.fm.sequencer.controller;
 
-import eugene.neocortex.fm.sequencer.OneDeadlineRepository;
-import eugene.neocortex.fm.sequencer.model.OneDeadline;
+import eugene.neocortex.fm.sequencer.DeadlineRepository;
+import eugene.neocortex.fm.sequencer.model.Deadline;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,29 +10,29 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-public class OneDeadlineController {
-    private OneDeadlineRepository repository;
+public class DeadlineController {
+    private DeadlineRepository repository;
 
-    public OneDeadlineController(OneDeadlineRepository repository) {
+    public DeadlineController(DeadlineRepository repository) {
         this.repository = repository;
     }
 
     @GetMapping("dl/all")
-    public Collection<OneDeadline> getAllDls() {
+    public Collection<Deadline> getAllDls() {
         return repository.findAll();
     }
 
 
     @RequestMapping(value = "dl/byId/{id}")
     @ResponseBody
-    public OneDeadline findDeadlineById(@PathVariable("id") long id) {
+    public Deadline findDeadlineById(@PathVariable("id") long id) {
         return repository.findOne(id);
     }
 
 
     @RequestMapping(value = "dl/byAC/{tailNumber}")
     @ResponseBody
-    public List<OneDeadline> findAllDeadlinesByAircraftTailNumber(
+    public List<Deadline> findAllDeadlinesByAircraftTailNumber(
             @PathVariable("tailNumber") String tailNumber) {
 
         return repository.findByTailNumber(tailNumber);
@@ -41,12 +41,12 @@ public class OneDeadlineController {
 
     @RequestMapping(value = "dl/update/{id}/{tailNumber}/{deadline}/{description}")
     @ResponseBody
-    public OneDeadline updateDeadlineById(@PathVariable("id") long id,
-                                          @PathVariable("tailNumber") String tailNumber,
-                                          @PathVariable("deadline") @DateTimeFormat(pattern = "dd-MM-yyyy") Date deadline,
-                                          @PathVariable("description") String description) {
+    public Deadline updateDeadlineById(@PathVariable("id") long id,
+                                       @PathVariable("tailNumber") String tailNumber,
+                                       @PathVariable("deadline") @DateTimeFormat(pattern = "dd-MM-yyyy") Date deadline,
+                                       @PathVariable("description") String description) {
 
-        OneDeadline deadlineToUpdate = repository.getOne(id);
+        Deadline deadlineToUpdate = repository.getOne(id);
         deadlineToUpdate.setTailNumber(tailNumber);
         deadlineToUpdate.setDeadline(deadline);
         deadlineToUpdate.setDescription(description);
@@ -75,7 +75,7 @@ public class OneDeadlineController {
                                @PathVariable("description") String description) {
 
         if (tailNumber != null && !tailNumber.isEmpty()) {
-            OneDeadline deadlineToSave = new OneDeadline();
+            Deadline deadlineToSave = new Deadline();
             deadlineToSave.setTailNumber(tailNumber);
             deadlineToSave.setDeadline(deadline);
             deadlineToSave.setDescription(description);

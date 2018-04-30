@@ -16,7 +16,7 @@ import java.util.Date;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class OneDeadline {
+public class Deadline {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -28,10 +28,10 @@ public class OneDeadline {
 
     private String description;
 
-    public OneDeadline() {
+    public Deadline() {
     }
 
-    public OneDeadline(Date deadline, String description, String tailNumber) {
+    public Deadline(Date deadline, String description, String tailNumber) {
         this.deadline = deadline;
         this.description = description;
         this.tailNumber = tailNumber;
@@ -71,7 +71,7 @@ public class OneDeadline {
 
     @Override
     public String toString() {
-        return "OneDeadline{" +
+        return "Deadline{" +
                 "id=" + id +
                 ", tailNumber='" + tailNumber + '\'' +
                 ", deadline=" + deadline +

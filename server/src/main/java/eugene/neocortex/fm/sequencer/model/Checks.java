@@ -9,9 +9,9 @@ import javax.persistence.Id;
 import java.util.Date;
 
 /**
- * Модель списка дедлайнов для борта,
- * а так же его крайние чеки
- */
+ * Модель списка краних чеков на борт
+ **/
+
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Checks {
