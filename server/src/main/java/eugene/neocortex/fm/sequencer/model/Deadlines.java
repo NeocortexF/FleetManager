@@ -21,9 +21,6 @@ public class Deadlines {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    //ключ - айди борта по которому дедлайн
-    private long key;
-
     private String tailNumber;
 
     //@OneToMany(mappedBy = "Deadlines")
@@ -54,7 +51,6 @@ public class Deadlines {
                      Date latestCcheckDate, int latestCcheckFlightHours, int latestCcheckFlightCycles,
                      Date latestAcheckDate, int lastestAcheckFlightHours, int lastetAcheckFlightCycles,
                      Date latestWeeklyCheckDate, int lastestWeeklyCheckFlightHours, int latestWeeklyCheckFlightCycles) {
-        this.key = key;
         this.tailNumber = tailNumber;
         this.deadlineList = deadlineList;
         this.latestCcheckDate = latestCcheckDate;
@@ -74,14 +70,6 @@ public class Deadlines {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public long getKey() {
-        return key;
-    }
-
-    public void setKey(long key) {
-        this.key = key;
     }
 
     public String getTailNumber() {
@@ -176,7 +164,6 @@ public class Deadlines {
     public String toString() {
         return "Deadlines{" +
                 "id=" + id +
-                ", key=" + key +
                 ", tailNumber='" + tailNumber + '\'' +
                 ", deadlineList=" + deadlineList +
                 ", latestCcheckDate=" + latestCcheckDate +
