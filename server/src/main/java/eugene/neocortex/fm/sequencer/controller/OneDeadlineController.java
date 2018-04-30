@@ -2,6 +2,7 @@ package eugene.neocortex.fm.sequencer.controller;
 
 import eugene.neocortex.fm.sequencer.OneDeadlineRepository;
 import eugene.neocortex.fm.sequencer.model.OneDeadline;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -32,7 +33,7 @@ public class OneDeadlineController {
     @ResponseBody
     public OneDeadline updateDeadlineById(@PathVariable("id") long id,
                                           @PathVariable("tailNumber") String tailNumber,
-                                          @PathVariable("deadline") Date deadline,
+                                          @PathVariable("deadline") @DateTimeFormat(pattern="dd-MM-yyyy") Date deadline,
                                           @PathVariable("description") String description) {
 
         OneDeadline deadlineToUpdate = repository.getOne(id);
@@ -60,7 +61,7 @@ public class OneDeadlineController {
     @RequestMapping(value = "dl/add/{tailNumber}/{deadline}/{description}")
     @ResponseBody
     public Boolean addDeadline(@PathVariable("tailNumber") String tailNumber,
-                               @PathVariable("deadline") Date deadline,
+                               @PathVariable("deadline") @DateTimeFormat(pattern="dd-MM-yyyy") Date deadline,
                                @PathVariable("description") String description) {
 
         if (tailNumber != null && !tailNumber.isEmpty()) {
