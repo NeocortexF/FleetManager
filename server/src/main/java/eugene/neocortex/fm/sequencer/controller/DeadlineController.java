@@ -46,17 +46,4 @@ public class DeadlineController {
             return false;
         }
     }
-
-//    @RequestMapping(value = "beer/add/{name}")
-//    @ResponseBody
-//    public String addBeer(@PathVariable("name") String name) {
-//        if (name != null && !name.isEmpty()) {
-//            Deadlines beerToSave = new Deadlines();
-//            beerToSave.setName(name);
-//            repository.save(beerToSave);
-//            return beerToSave.toString();
-//        } else {
-//            return "Please enter the name of beer";
-//        }
-//    }
 }
