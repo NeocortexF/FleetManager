@@ -6,7 +6,6 @@ import eugene.neocortex.fm.sequencer.model.Checks;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Collection;
 import java.util.Date;
 
