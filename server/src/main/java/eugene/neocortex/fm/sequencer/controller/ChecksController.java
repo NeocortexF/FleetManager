@@ -4,13 +4,11 @@ package eugene.neocortex.fm.sequencer.controller;
 import eugene.neocortex.fm.sequencer.ChecksRepository;
 import eugene.neocortex.fm.sequencer.model.Checks;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 @RestController
 public class ChecksController {
@@ -37,24 +35,41 @@ public class ChecksController {
         return repository.findByTailNumber(tailNumber);
     }
 
-//    @PostMapping(value = "checks/save")
-//    public ResponseEntity createChecks(@RequestBody Checks checks) {
-//        repository.save(checks);
-//        return new ResponseEntity(checks, HttpStatus.OK);
-//    }
 
-    @RequestMapping(value = "checks/add/{tailNumber}/{latestCcheckDate}/{latestCcheckFlightHours/" +
-            "{}")
+    @RequestMapping(value = "checks/close/{id}/{dateOfCheckDone}/{status}")
     @ResponseBody
-    public Boolean addDeadline(@PathVariable("tailNumber") String tailNumber,
-                               @PathVariable("latestCcheckDate") @DateTimeFormat(pattern = "dd-MM-yyyy") Date latestCcheckDate,
-                               @PathVariable("latestCcheckFlightHours") Integer latestCcheckFlightHours) {
+    public Boolean closeCheck(@PathVariable("id") long id,
+                              @PathVariable("dateOfCheckDone") @DateTimeFormat(pattern = "dd-MM-yyyy") Date dateOfCheckDone,
+                              @PathVariable("status") String status) {
+        if (repository.exists(id)) {
+            Checks checkToClose = repository.findOne(id);
+            checkToClose.setDateOfCheckDone(dateOfCheckDone);
+            checkToClose.setStatus(status);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @RequestMapping(value = "checks/add/{tailNumber}/{checkType}/" +
+            "{checkDeadline}/{checkFlightHours}/{checkFlightCycles}/{status}")
+    @ResponseBody
+    public Boolean addCheck(@PathVariable("tailNumber") String tailNumber,
+                            @PathVariable("checkType") String checkType,
+                            @PathVariable("checkDeadline") @DateTimeFormat(pattern = "dd-MM-yyyy") Date checkDeadline,
+                            @PathVariable("checkFlightHours") Integer checkFlightHours,
+                            @PathVariable("checkFlightCycles") Integer checkFlightCycles,
+                            @PathVariable("status") String status) {
 
         if (tailNumber != null && !tailNumber.isEmpty()) {
-            Checks checksToSave = new Checks();
-            deadlineToSave.setTailNumber(tailNumber);
-
-            repository.save(deadlineToSave);
+            Checks checkToAdd = new Checks();
+            checkToAdd.setTailNumber(tailNumber);
+            checkToAdd.setCheckType(checkType);
+            checkToAdd.setCheckDeadline(checkDeadline);
+            checkToAdd.setCheckFlightHours(checkFlightHours);
+            checkToAdd.setCheckFlightCycles(checkFlightCycles);
+            checkToAdd.setStatus(status);
+            repository.save(checkToAdd);
             return true;
         } else {
             return false;
