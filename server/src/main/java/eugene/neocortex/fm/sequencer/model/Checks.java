@@ -22,41 +22,35 @@ public class Checks {
 
     private String tailNumber;
 
-    private Date latestCcheckDate;
+    //A-C-Weekly
+    private String checkType;
 
-    private int latestCcheckFlightHours;
+    //дата закрытия чека
+    private Date dateOfCheckDone;
 
-    private int latestCcheckFlightCycles;
+    private Date checkDeadline;
 
-    private Date latestAcheckDate;
+    private int checkFlightHours;
 
-    private int lastestAcheckFlightHours;
+    private int checkFlightCycles;
 
-    private int lastetAcheckFlightCycles;
+    //Closed, planned
+    private String status;
 
-    private Date latestWeeklyCheckDate;
-
-    private int lastestWeeklyCheckFlightHours;
-
-    private int latestWeeklyCheckFlightCycles;
 
     public Checks() {
     }
 
-    public Checks(String tailNumber, Date latestCcheckDate, int latestCcheckFlightHours,
-                  int latestCcheckFlightCycles, Date latestAcheckDate,
-                  int lastestAcheckFlightHours, int lastetAcheckFlightCycles,
-                  Date latestWeeklyCheckDate, int lastestWeeklyCheckFlightHours, int latestWeeklyCheckFlightCycles) {
+    public Checks(String tailNumber, String checkType, Date dateOfCheckDone,
+                  Date checkDeadline, int checkFlightHours, int checkFlightCycles,
+                  String status) {
         this.tailNumber = tailNumber;
-        this.latestCcheckDate = latestCcheckDate;
-        this.latestCcheckFlightHours = latestCcheckFlightHours;
-        this.latestCcheckFlightCycles = latestCcheckFlightCycles;
-        this.latestAcheckDate = latestAcheckDate;
-        this.lastestAcheckFlightHours = lastestAcheckFlightHours;
-        this.lastetAcheckFlightCycles = lastetAcheckFlightCycles;
-        this.latestWeeklyCheckDate = latestWeeklyCheckDate;
-        this.lastestWeeklyCheckFlightHours = lastestWeeklyCheckFlightHours;
-        this.latestWeeklyCheckFlightCycles = latestWeeklyCheckFlightCycles;
+        this.checkType = checkType;
+        this.dateOfCheckDone = dateOfCheckDone;
+        this.checkDeadline = checkDeadline;
+        this.checkFlightHours = checkFlightHours;
+        this.checkFlightCycles = checkFlightCycles;
+        this.status = status;
     }
 
     public long getId() {
@@ -75,76 +69,52 @@ public class Checks {
         this.tailNumber = tailNumber;
     }
 
-    public Date getLatestCcheckDate() {
-        return latestCcheckDate;
+    public String getCheckType() {
+        return checkType;
     }
 
-    public void setLatestCcheckDate(Date latestCcheckDate) {
-        this.latestCcheckDate = latestCcheckDate;
+    public void setCheckType(String checkType) {
+        this.checkType = checkType;
     }
 
-    public int getLatestCcheckFlightHours() {
-        return latestCcheckFlightHours;
+    public Date getDateOfCheckDone() {
+        return dateOfCheckDone;
     }
 
-    public void setLatestCcheckFlightHours(int latestCcheckFlightHours) {
-        this.latestCcheckFlightHours = latestCcheckFlightHours;
+    public void setDateOfCheckDone(Date dateOfCheckDone) {
+        this.dateOfCheckDone = dateOfCheckDone;
     }
 
-    public int getLatestCcheckFlightCycles() {
-        return latestCcheckFlightCycles;
+    public Date getCheckDeadline() {
+        return checkDeadline;
     }
 
-    public void setLatestCcheckFlightCycles(int latestCcheckFlightCycles) {
-        this.latestCcheckFlightCycles = latestCcheckFlightCycles;
+    public void setCheckDeadline(Date checkDeadline) {
+        this.checkDeadline = checkDeadline;
     }
 
-    public Date getLatestAcheckDate() {
-        return latestAcheckDate;
+    public int getCheckFlightHours() {
+        return checkFlightHours;
     }
 
-    public void setLatestAcheckDate(Date latestAcheckDate) {
-        this.latestAcheckDate = latestAcheckDate;
+    public void setCheckFlightHours(int checkFlightHours) {
+        this.checkFlightHours = checkFlightHours;
     }
 
-    public int getLastestAcheckFlightHours() {
-        return lastestAcheckFlightHours;
+    public int getCheckFlightCycles() {
+        return checkFlightCycles;
     }
 
-    public void setLastestAcheckFlightHours(int lastestAcheckFlightHours) {
-        this.lastestAcheckFlightHours = lastestAcheckFlightHours;
+    public void setCheckFlightCycles(int checkFlightCycles) {
+        this.checkFlightCycles = checkFlightCycles;
     }
 
-    public int getLastetAcheckFlightCycles() {
-        return lastetAcheckFlightCycles;
+    public String getStatus() {
+        return status;
     }
 
-    public void setLastetAcheckFlightCycles(int lastetAcheckFlightCycles) {
-        this.lastetAcheckFlightCycles = lastetAcheckFlightCycles;
-    }
-
-    public Date getLatestWeeklyCheckDate() {
-        return latestWeeklyCheckDate;
-    }
-
-    public void setLatestWeeklyCheckDate(Date latestWeeklyCheckDate) {
-        this.latestWeeklyCheckDate = latestWeeklyCheckDate;
-    }
-
-    public int getLastestWeeklyCheckFlightHours() {
-        return lastestWeeklyCheckFlightHours;
-    }
-
-    public void setLastestWeeklyCheckFlightHours(int lastestWeeklyCheckFlightHours) {
-        this.lastestWeeklyCheckFlightHours = lastestWeeklyCheckFlightHours;
-    }
-
-    public int getLatestWeeklyCheckFlightCycles() {
-        return latestWeeklyCheckFlightCycles;
-    }
-
-    public void setLatestWeeklyCheckFlightCycles(int latestWeeklyCheckFlightCycles) {
-        this.latestWeeklyCheckFlightCycles = latestWeeklyCheckFlightCycles;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
@@ -152,15 +122,12 @@ public class Checks {
         return "Checks{" +
                 "id=" + id +
                 ", tailNumber='" + tailNumber + '\'' +
-                ", latestCcheckDate=" + latestCcheckDate +
-                ", latestCcheckFlightHours=" + latestCcheckFlightHours +
-                ", latestCcheckFlightCycles=" + latestCcheckFlightCycles +
-                ", latestAcheckDate=" + latestAcheckDate +
-                ", lastestAcheckFlightHours=" + lastestAcheckFlightHours +
-                ", lastetAcheckFlightCycles=" + lastetAcheckFlightCycles +
-                ", latestWeeklyCheckDate=" + latestWeeklyCheckDate +
-                ", lastestWeeklyCheckFlightHours=" + lastestWeeklyCheckFlightHours +
-                ", latestWeeklyCheckFlightCycles=" + latestWeeklyCheckFlightCycles +
+                ", checkType='" + checkType + '\'' +
+                ", dateOfCheckDone=" + dateOfCheckDone +
+                ", checkDeadline=" + checkDeadline +
+                ", checkFlightHours=" + checkFlightHours +
+                ", checkFlightCycles=" + checkFlightCycles +
+                ", status='" + status + '\'' +
                 '}';
     }
 }
