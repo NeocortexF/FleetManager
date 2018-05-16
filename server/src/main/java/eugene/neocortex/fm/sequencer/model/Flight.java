@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -27,42 +26,39 @@ public class Flight {
 
     private String tailNumber;
 
-    private Date departure;
+    private String departureAirport;
 
-    private Date arrival;
+    private Date departureTime;
+
+    private String arrivalAirport;
+
+    private Date arrivalTime;
 
     private String captain;
 
     private String firstOfficer;
 
-    private ArrayList<String> cabinCrewOnBoard;
+    //тоже самое должен быть метод, а не в моделе
+    // дернет по АйДи полета findAllCrew
+    //private ArrayList<String> cabinCrewOnBoard;
+    //private ArrayList<String> passengersOnBoard;
 
-    private ArrayList<String> passengersOnBoard;
-
-    private String remarks;
-
-    private ArrayList<Checks> allChecksForThisAircraft;
-
-    private ArrayList<Deadline> allDeadlinesForThisAircraft;
+    // Это не должно быть в моделе полета! Это должен быть метод который дернет findAllByAC
+    //private ArrayList<Checks> allChecksForThisAircraft;
+    //private ArrayList<Deadline> allDeadlinesForThisAircraft;
 
     public Flight() {
     }
 
-    public Flight(String tailNumber, Date departure, Date arrival, String captain,
-                  String firstOfficer, ArrayList<String> cabinCrewOnBoard,
-                  ArrayList<String> passengersOnBoard, String remarks,
-                  ArrayList<Checks> allChecksForThisAircraft,
-                  ArrayList<Deadline> allDeadlinesForThisAircraft) {
+    public Flight(String tailNumber, String departureAirport, Date departureTime,
+                  String arrivalAirport, Date arrivalTime, String captain, String firstOfficer) {
         this.tailNumber = tailNumber;
-        this.departure = departure;
-        this.arrival = arrival;
+        this.departureAirport = departureAirport;
+        this.departureTime = departureTime;
+        this.arrivalAirport = arrivalAirport;
+        this.arrivalTime = arrivalTime;
         this.captain = captain;
         this.firstOfficer = firstOfficer;
-        this.cabinCrewOnBoard = cabinCrewOnBoard;
-        this.passengersOnBoard = passengersOnBoard;
-        this.remarks = remarks;
-        this.allChecksForThisAircraft = allChecksForThisAircraft;
-        this.allDeadlinesForThisAircraft = allDeadlinesForThisAircraft;
     }
 
     public long getId() {
@@ -81,20 +77,36 @@ public class Flight {
         this.tailNumber = tailNumber;
     }
 
-    public Date getDeparture() {
-        return departure;
+    public String getDepartureAirport() {
+        return departureAirport;
     }
 
-    public void setDeparture(Date departure) {
-        this.departure = departure;
+    public void setDepartureAirport(String departureAirport) {
+        this.departureAirport = departureAirport;
     }
 
-    public Date getArrival() {
-        return arrival;
+    public Date getDepartureTime() {
+        return departureTime;
     }
 
-    public void setArrival(Date arrival) {
-        this.arrival = arrival;
+    public void setDepartureTime(Date departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    public String getArrivalAirport() {
+        return arrivalAirport;
+    }
+
+    public void setArrivalAirport(String arrivalAirport) {
+        this.arrivalAirport = arrivalAirport;
+    }
+
+    public Date getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(Date arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
 
     public String getCaptain() {
@@ -113,60 +125,17 @@ public class Flight {
         this.firstOfficer = firstOfficer;
     }
 
-    public ArrayList<String> getCabinCrewOnBoard() {
-        return cabinCrewOnBoard;
-    }
-
-    public void setCabinCrewOnBoard(ArrayList<String> cabinCrewOnBoard) {
-        this.cabinCrewOnBoard = cabinCrewOnBoard;
-    }
-
-    public ArrayList<String> getPassengersOnBoard() {
-        return passengersOnBoard;
-    }
-
-    public void setPassengersOnBoard(ArrayList<String> passengersOnBoard) {
-        this.passengersOnBoard = passengersOnBoard;
-    }
-
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public ArrayList<Checks> getAllChecksForThisAircraft() {
-        return allChecksForThisAircraft;
-    }
-
-    public void setAllChecksForThisAircraft(ArrayList<Checks> allChecksForThisAircraft) {
-        this.allChecksForThisAircraft = allChecksForThisAircraft;
-    }
-
-    public ArrayList<Deadline> getAllDeadlinesForThisAircraft() {
-        return allDeadlinesForThisAircraft;
-    }
-
-    public void setAllDeadlinesForThisAircraft(ArrayList<Deadline> allDeadlinesForThisAircraft) {
-        this.allDeadlinesForThisAircraft = allDeadlinesForThisAircraft;
-    }
-
     @Override
     public String toString() {
         return "Flight{" +
                 "id=" + id +
                 ", tailNumber='" + tailNumber + '\'' +
-                ", departure=" + departure +
-                ", arrival=" + arrival +
+                ", departureAirport='" + departureAirport + '\'' +
+                ", departureTime=" + departureTime +
+                ", arrivalAirport='" + arrivalAirport + '\'' +
+                ", arrivalTime=" + arrivalTime +
                 ", captain='" + captain + '\'' +
                 ", firstOfficer='" + firstOfficer + '\'' +
-                ", cabinCrewOnBoard=" + cabinCrewOnBoard +
-                ", passengersOnBoard=" + passengersOnBoard +
-                ", remarks='" + remarks + '\'' +
-                ", allChecksForThisAircraft=" + allChecksForThisAircraft +
-                ", allDeadlinesForThisAircraft=" + allDeadlinesForThisAircraft +
                 '}';
     }
 }
