@@ -14,7 +14,7 @@ import java.util.Date;
  * В секвенсоре основной сущностью является полет
  * Каждый полет это отдельная запись в таблице которая содержит следующее как минимум
  * Выборка делается по датам и группируется по бортам, внутри группировки сортируется по дате
- * Дата формата дата+время
+ * Дата для взлета/посадки формата дата+время
  */
 
 @Entity
@@ -31,7 +31,9 @@ public class Flight {
 
     private Date arrival;
 
-    private ArrayList<String> pilotsOnBoard;
+    private String captain;
+
+    private String firstOfficer;
 
     private ArrayList<String> cabinCrewOnBoard;
 
@@ -46,14 +48,16 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(String tailNumber, Date departure, Date arrival, ArrayList<String> pilotsOnBoard,
-                  ArrayList<String> cabinCrewOnBoard, ArrayList<String> passengersOnBoard,
-                  String remarks, ArrayList<Checks> allChecksForThisAircraft,
+    public Flight(String tailNumber, Date departure, Date arrival, String captain,
+                  String firstOfficer, ArrayList<String> cabinCrewOnBoard,
+                  ArrayList<String> passengersOnBoard, String remarks,
+                  ArrayList<Checks> allChecksForThisAircraft,
                   ArrayList<Deadline> allDeadlinesForThisAircraft) {
         this.tailNumber = tailNumber;
         this.departure = departure;
         this.arrival = arrival;
-        this.pilotsOnBoard = pilotsOnBoard;
+        this.captain = captain;
+        this.firstOfficer = firstOfficer;
         this.cabinCrewOnBoard = cabinCrewOnBoard;
         this.passengersOnBoard = passengersOnBoard;
         this.remarks = remarks;
@@ -93,12 +97,20 @@ public class Flight {
         this.arrival = arrival;
     }
 
-    public ArrayList<String> getPilotsOnBoard() {
-        return pilotsOnBoard;
+    public String getCaptain() {
+        return captain;
     }
 
-    public void setPilotsOnBoard(ArrayList<String> pilotsOnBoard) {
-        this.pilotsOnBoard = pilotsOnBoard;
+    public void setCaptain(String captain) {
+        this.captain = captain;
+    }
+
+    public String getFirstOfficer() {
+        return firstOfficer;
+    }
+
+    public void setFirstOfficer(String firstOfficer) {
+        this.firstOfficer = firstOfficer;
     }
 
     public ArrayList<String> getCabinCrewOnBoard() {
@@ -148,7 +160,8 @@ public class Flight {
                 ", tailNumber='" + tailNumber + '\'' +
                 ", departure=" + departure +
                 ", arrival=" + arrival +
-                ", pilotsOnBoard=" + pilotsOnBoard +
+                ", captain='" + captain + '\'' +
+                ", firstOfficer='" + firstOfficer + '\'' +
                 ", cabinCrewOnBoard=" + cabinCrewOnBoard +
                 ", passengersOnBoard=" + passengersOnBoard +
                 ", remarks='" + remarks + '\'' +
