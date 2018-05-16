@@ -39,13 +39,14 @@ public class Flight {
     private String firstOfficer;
 
     //тоже самое должен быть метод, а не в моделе
-    // дернет по АйДи полета findAllCrew
+    // дернет по АйДи полета findAllCrewByFlightId
     //private ArrayList<String> cabinCrewOnBoard;
     //private ArrayList<String> passengersOnBoard;
 
     // Это не должно быть в моделе полета! Это должен быть метод который дернет findAllByAC
-    //private ArrayList<Checks> allChecksForThisAircraft;
-    //private ArrayList<Deadline> allDeadlinesForThisAircraft;
+
+    //private ArrayList<Checks> allChecksForThisAircraft;  checks/byAC/VP-BEL
+    //private ArrayList<Deadline> allDeadlinesForThisAircraft; dl/byAC/{tailNumber}
 
     public Flight() {
     }
