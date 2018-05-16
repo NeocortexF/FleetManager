@@ -31,30 +31,34 @@ public class Flight {
 
     private Date arrival;
 
-    private ArrayList<String> pilots;
+    private ArrayList<String> pilotsOnBoard;
 
-    private ArrayList<String> cabinCrew;
+    private ArrayList<String> cabinCrewOnBoard;
 
-    private ArrayList<String> passengers;
+    private ArrayList<String> passengersOnBoard;
 
     private String remarks;
 
-    private ArrayList<Checks> allChecksAndDeadlinesForThisAircraft;
+    private ArrayList<Checks> allChecksForThisAircraft;
+
+    private ArrayList<Deadline> allDeadlinesForThisAircraft;
 
     public Flight() {
     }
 
-    public Flight(String tailNumber, Date departure, Date arrival, ArrayList<String> pilots,
-                  ArrayList<String> cabinCrew, ArrayList<String> passengers,
-                  String remarks, ArrayList<Checks> allChecksAndDeadlinesForThisAircraft) {
+    public Flight(String tailNumber, Date departure, Date arrival, ArrayList<String> pilotsOnBoard,
+                  ArrayList<String> cabinCrewOnBoard, ArrayList<String> passengersOnBoard,
+                  String remarks, ArrayList<Checks> allChecksForThisAircraft,
+                  ArrayList<Deadline> allDeadlinesForThisAircraft) {
         this.tailNumber = tailNumber;
         this.departure = departure;
         this.arrival = arrival;
-        this.pilots = pilots;
-        this.cabinCrew = cabinCrew;
-        this.passengers = passengers;
+        this.pilotsOnBoard = pilotsOnBoard;
+        this.cabinCrewOnBoard = cabinCrewOnBoard;
+        this.passengersOnBoard = passengersOnBoard;
         this.remarks = remarks;
-        this.allChecksAndDeadlinesForThisAircraft = allChecksAndDeadlinesForThisAircraft;
+        this.allChecksForThisAircraft = allChecksForThisAircraft;
+        this.allDeadlinesForThisAircraft = allDeadlinesForThisAircraft;
     }
 
     public long getId() {
@@ -89,28 +93,28 @@ public class Flight {
         this.arrival = arrival;
     }
 
-    public ArrayList<String> getPilots() {
-        return pilots;
+    public ArrayList<String> getPilotsOnBoard() {
+        return pilotsOnBoard;
     }
 
-    public void setPilots(ArrayList<String> pilots) {
-        this.pilots = pilots;
+    public void setPilotsOnBoard(ArrayList<String> pilotsOnBoard) {
+        this.pilotsOnBoard = pilotsOnBoard;
     }
 
-    public ArrayList<String> getCabinCrew() {
-        return cabinCrew;
+    public ArrayList<String> getCabinCrewOnBoard() {
+        return cabinCrewOnBoard;
     }
 
-    public void setCabinCrew(ArrayList<String> cabinCrew) {
-        this.cabinCrew = cabinCrew;
+    public void setCabinCrewOnBoard(ArrayList<String> cabinCrewOnBoard) {
+        this.cabinCrewOnBoard = cabinCrewOnBoard;
     }
 
-    public ArrayList<String> getPassengers() {
-        return passengers;
+    public ArrayList<String> getPassengersOnBoard() {
+        return passengersOnBoard;
     }
 
-    public void setPassengers(ArrayList<String> passengers) {
-        this.passengers = passengers;
+    public void setPassengersOnBoard(ArrayList<String> passengersOnBoard) {
+        this.passengersOnBoard = passengersOnBoard;
     }
 
     public String getRemarks() {
@@ -121,12 +125,20 @@ public class Flight {
         this.remarks = remarks;
     }
 
-    public ArrayList<Checks> getAllChecksAndDeadlinesForThisAircraft() {
-        return allChecksAndDeadlinesForThisAircraft;
+    public ArrayList<Checks> getAllChecksForThisAircraft() {
+        return allChecksForThisAircraft;
     }
 
-    public void setAllChecksAndDeadlinesForThisAircraft(ArrayList<Checks> allChecksAndDeadlinesForThisAircraft) {
-        this.allChecksAndDeadlinesForThisAircraft = allChecksAndDeadlinesForThisAircraft;
+    public void setAllChecksForThisAircraft(ArrayList<Checks> allChecksForThisAircraft) {
+        this.allChecksForThisAircraft = allChecksForThisAircraft;
+    }
+
+    public ArrayList<Deadline> getAllDeadlinesForThisAircraft() {
+        return allDeadlinesForThisAircraft;
+    }
+
+    public void setAllDeadlinesForThisAircraft(ArrayList<Deadline> allDeadlinesForThisAircraft) {
+        this.allDeadlinesForThisAircraft = allDeadlinesForThisAircraft;
     }
 
     @Override
@@ -136,11 +148,12 @@ public class Flight {
                 ", tailNumber='" + tailNumber + '\'' +
                 ", departure=" + departure +
                 ", arrival=" + arrival +
-                ", pilots=" + pilots +
-                ", cabinCrew=" + cabinCrew +
-                ", passengers=" + passengers +
+                ", pilotsOnBoard=" + pilotsOnBoard +
+                ", cabinCrewOnBoard=" + cabinCrewOnBoard +
+                ", passengersOnBoard=" + passengersOnBoard +
                 ", remarks='" + remarks + '\'' +
-                ", allChecksAndDeadlinesForThisAircraft=" + allChecksAndDeadlinesForThisAircraft +
+                ", allChecksForThisAircraft=" + allChecksForThisAircraft +
+                ", allDeadlinesForThisAircraft=" + allDeadlinesForThisAircraft +
                 '}';
     }
 }
