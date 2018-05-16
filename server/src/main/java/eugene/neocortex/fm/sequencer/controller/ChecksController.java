@@ -30,8 +30,8 @@ public class ChecksController {
 
     @RequestMapping(value = "checks/byAC/{tailNumber}")
     @ResponseBody
-    public Checks findChecksByTailNumber(@PathVariable("tailNumber") String tailNumber) {
-        return repository.findByTailNumber(tailNumber);
+    public Collection<Checks> findChecksByTailNumber(@PathVariable("tailNumber") String tailNumber) {
+        return repository.findAllByTailNumber(tailNumber);
     }
 
 
@@ -44,6 +44,7 @@ public class ChecksController {
             Checks checkToClose = repository.findOne(id);
             checkToClose.setDateOfCheckDone(dateOfCheckDone);
             checkToClose.setStatus(status);
+            repository.save(checkToClose);
             return true;
         } else {
             return false;
