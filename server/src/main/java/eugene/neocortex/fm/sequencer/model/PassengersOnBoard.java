@@ -13,7 +13,7 @@ import javax.persistence.Id;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class PassangersOnBoard {
+public class PassengersOnBoard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -26,10 +26,10 @@ public class PassangersOnBoard {
 
     private String place;
 
-    public PassangersOnBoard() {
+    public PassengersOnBoard() {
     }
 
-    public PassangersOnBoard(long flightId, String name, String place) {
+    public PassengersOnBoard(long flightId, String name, String place) {
         this.flightId = flightId;
         this.name = name;
         this.place = place;
@@ -69,7 +69,7 @@ public class PassangersOnBoard {
 
     @Override
     public String toString() {
-        return "PassangersOnBoard{" +
+        return "PassengersOnBoard{" +
                 "id=" + id +
                 ", flightId=" + flightId +
                 ", name='" + name + '\'' +
