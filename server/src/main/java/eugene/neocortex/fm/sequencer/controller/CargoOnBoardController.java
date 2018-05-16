@@ -1,8 +1,7 @@
 package eugene.neocortex.fm.sequencer.controller;
 
-
-import eugene.neocortex.fm.sequencer.CabinCrewOnBoardRepository;
-import eugene.neocortex.fm.sequencer.model.CabinCrewOnBoard;
+import eugene.neocortex.fm.sequencer.CargoOnBoardRepository;
+import eugene.neocortex.fm.sequencer.model.CargoOnBoard;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,28 +10,28 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 
 @RestController
-public class CabinCrewOnBoardController {
-    private CabinCrewOnBoardRepository repository;
+public class CargoOnBoardController {
+    private CargoOnBoardRepository repository;
 
-    public CabinCrewOnBoardController(CabinCrewOnBoardRepository repository) {
+    public CargoOnBoardController(CargoOnBoardRepository repository) {
         this.repository = repository;
     }
 
     @RequestMapping(value = "cabin/byFlightId/{flightId}")
     @ResponseBody
-    public Collection<CabinCrewOnBoard> findAllCabinCrewOnBoardByFlightId(
+    public Collection<CargoOnBoard> findAllCargoOnBoardByFlightId(
             @PathVariable("flightId") Long id) {
         return repository.findAllByFlightId(id);
     }
 
     @RequestMapping(value = "cabin/add/{flightId}/{name}/{position}")
     @ResponseBody
-    public Boolean addCabinCrewMemberToFlight(@PathVariable("flightId") Long flightId,
-                                              @PathVariable("name") String name,
-                                              @PathVariable("position") String position) {
+    public Boolean addCargoOnBoardToFlight(@PathVariable("flightId") Long flightId,
+                                           @PathVariable("name") String name,
+                                           @PathVariable("position") String position) {
 
         if (flightId != null) {
-            CabinCrewOnBoard cabinCrewOnBoard = new CabinCrewOnBoard();
+            CargoOnBoard cabinCrewOnBoard = new CargoOnBoard();
             cabinCrewOnBoard.setFlightId(flightId);
             cabinCrewOnBoard.setName(name);
             cabinCrewOnBoard.setPosition(position);
@@ -45,12 +44,12 @@ public class CabinCrewOnBoardController {
 
     @RequestMapping(value = "cabin/update/{id}/{flightId}/{name}/{position}")
     @ResponseBody
-    public CabinCrewOnBoard updateCabinCrewOnBoardById(@PathVariable("id") long id,
-                                                       @PathVariable("flightId") long flightId,
-                                                       @PathVariable("tailNumber") String name,
-                                                       @PathVariable("description") String position) {
+    public CargoOnBoard updateCargoOnBoardById(@PathVariable("id") long id,
+                                               @PathVariable("flightId") long flightId,
+                                               @PathVariable("tailNumber") String name,
+                                               @PathVariable("description") String position) {
 
-        CabinCrewOnBoard cabinCrewOnBoardToUpdate = repository.getOne(id);
+        CargoOnBoard cabinCrewOnBoardToUpdate = repository.getOne(id);
         cabinCrewOnBoardToUpdate.setFlightId(flightId);
         cabinCrewOnBoardToUpdate.setName(name);
         cabinCrewOnBoardToUpdate.setPosition(position);
@@ -61,7 +60,7 @@ public class CabinCrewOnBoardController {
 
     @RequestMapping(value = "cabin/delete/{id}")
     @ResponseBody
-    public boolean removeCabinCrewMemberById(@PathVariable("id") long id) {
+    public boolean removeCargoOnBoardById(@PathVariable("id") long id) {
         if (repository.exists(id)) {
             repository.delete(id);
             return true;
