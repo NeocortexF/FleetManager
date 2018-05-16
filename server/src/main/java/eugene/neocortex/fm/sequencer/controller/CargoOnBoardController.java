@@ -17,48 +17,52 @@ public class CargoOnBoardController {
         this.repository = repository;
     }
 
-    @RequestMapping(value = "cabin/byFlightId/{flightId}")
+    @RequestMapping(value = "cargo/byFlightId/{flightId}")
     @ResponseBody
     public Collection<CargoOnBoard> findAllCargoOnBoardByFlightId(
             @PathVariable("flightId") Long id) {
         return repository.findAllByFlightId(id);
     }
 
-    @RequestMapping(value = "cabin/add/{flightId}/{name}/{position}")
+    @RequestMapping(value = "cargo/add/{flightId}/{cargoCompartment}/{description}/{weight}")
     @ResponseBody
     public Boolean addCargoOnBoardToFlight(@PathVariable("flightId") Long flightId,
-                                           @PathVariable("name") String name,
-                                           @PathVariable("position") String position) {
+                                           @PathVariable("cargoCompartment") String cargoCompartment,
+                                           @PathVariable("description") String description,
+                                           @PathVariable("weight") Float weight) {
 
         if (flightId != null) {
-            CargoOnBoard cabinCrewOnBoard = new CargoOnBoard();
-            cabinCrewOnBoard.setFlightId(flightId);
-            cabinCrewOnBoard.setName(name);
-            cabinCrewOnBoard.setPosition(position);
-            repository.save(cabinCrewOnBoard);
+            CargoOnBoard cargoOnBoardToAdd = new CargoOnBoard();
+            cargoOnBoardToAdd.setFlightId(flightId);
+            cargoOnBoardToAdd.setCargoCompartment(cargoCompartment);
+            cargoOnBoardToAdd.setDescription(description);
+            cargoOnBoardToAdd.setWeight(weight);
+            repository.save(cargoOnBoardToAdd);
             return true;
         } else {
             return false;
         }
     }
 
-    @RequestMapping(value = "cabin/update/{id}/{flightId}/{name}/{position}")
+    @RequestMapping(value = "cargo/update/{id}/{flightId}/{cargoCompartment}/{description}/{weight}")
     @ResponseBody
     public CargoOnBoard updateCargoOnBoardById(@PathVariable("id") long id,
-                                               @PathVariable("flightId") long flightId,
-                                               @PathVariable("tailNumber") String name,
-                                               @PathVariable("description") String position) {
+                                               @PathVariable("flightId") Long flightId,
+                                               @PathVariable("cargoCompartment") String cargoCompartment,
+                                               @PathVariable("description") String description,
+                                               @PathVariable("weight") Float weight) {
 
-        CargoOnBoard cabinCrewOnBoardToUpdate = repository.getOne(id);
-        cabinCrewOnBoardToUpdate.setFlightId(flightId);
-        cabinCrewOnBoardToUpdate.setName(name);
-        cabinCrewOnBoardToUpdate.setPosition(position);
-        repository.save(cabinCrewOnBoardToUpdate);
+        CargoOnBoard cargoOnBoardToUpdate = repository.getOne(id);
+        cargoOnBoardToUpdate.setFlightId(flightId);
+        cargoOnBoardToUpdate.setCargoCompartment(cargoCompartment);
+        cargoOnBoardToUpdate.setDescription(description);
+        cargoOnBoardToUpdate.setWeight(weight);
+        repository.save(cargoOnBoardToUpdate);
 
         return repository.findOne(id);
     }
 
-    @RequestMapping(value = "cabin/delete/{id}")
+    @RequestMapping(value = "cargo/delete/{id}")
     @ResponseBody
     public boolean removeCargoOnBoardById(@PathVariable("id") long id) {
         if (repository.exists(id)) {
