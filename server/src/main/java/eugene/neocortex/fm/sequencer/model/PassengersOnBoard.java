@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Перечень пассажиров с привязкой к конткретному рейсу
+ * Перечень пассажиров с привязкой к конкретному рейсу
  */
 
 @Entity
