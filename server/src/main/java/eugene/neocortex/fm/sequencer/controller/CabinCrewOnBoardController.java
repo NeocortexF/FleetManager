@@ -47,8 +47,8 @@ public class CabinCrewOnBoardController {
     @ResponseBody
     public CabinCrewOnBoard updateCabinCrewOnBoardById(@PathVariable("id") long id,
                                                        @PathVariable("flightId") long flightId,
-                                                       @PathVariable("tailNumber") String name,
-                                                       @PathVariable("description") String position) {
+                                                       @PathVariable("name") String name,
+                                                       @PathVariable("position") String position) {
 
         CabinCrewOnBoard cabinCrewOnBoardToUpdate = repository.getOne(id);
         cabinCrewOnBoardToUpdate.setFlightId(flightId);

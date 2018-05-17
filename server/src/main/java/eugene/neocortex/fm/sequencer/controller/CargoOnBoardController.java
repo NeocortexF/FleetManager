@@ -29,7 +29,7 @@ public class CargoOnBoardController {
     public Boolean addCargoOnBoardToFlight(@PathVariable("flightId") Long flightId,
                                            @PathVariable("cargoCompartment") String cargoCompartment,
                                            @PathVariable("description") String description,
-                                           @PathVariable("weight") Float weight) {
+                                           @PathVariable("weight") float weight) {
 
         if (flightId != null) {
             CargoOnBoard cargoOnBoardToAdd = new CargoOnBoard();
@@ -47,10 +47,10 @@ public class CargoOnBoardController {
     @RequestMapping(value = "cargo/update/{id}/{flightId}/{cargoCompartment}/{description}/{weight}")
     @ResponseBody
     public CargoOnBoard updateCargoOnBoardById(@PathVariable("id") long id,
-                                               @PathVariable("flightId") Long flightId,
+                                               @PathVariable("flightId") long flightId,
                                                @PathVariable("cargoCompartment") String cargoCompartment,
                                                @PathVariable("description") String description,
-                                               @PathVariable("weight") Float weight) {
+                                               @PathVariable("weight") float weight) {
 
         CargoOnBoard cargoOnBoardToUpdate = repository.getOne(id);
         cargoOnBoardToUpdate.setFlightId(flightId);
