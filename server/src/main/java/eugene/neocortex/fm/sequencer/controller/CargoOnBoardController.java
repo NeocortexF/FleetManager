@@ -29,16 +29,22 @@ public class CargoOnBoardController {
     public Boolean addCargoOnBoardToFlight(@PathVariable("flightId") Long flightId,
                                            @PathVariable("cargoCompartment") String cargoCompartment,
                                            @PathVariable("description") String description,
-                                           @PathVariable("weight") float weight) {
+                                           @PathVariable("weight") String weight) {
 
         if (flightId != null) {
-            CargoOnBoard cargoOnBoardToAdd = new CargoOnBoard();
-            cargoOnBoardToAdd.setFlightId(flightId);
-            cargoOnBoardToAdd.setCargoCompartment(cargoCompartment);
-            cargoOnBoardToAdd.setDescription(description);
-            cargoOnBoardToAdd.setWeight(weight);
-            repository.save(cargoOnBoardToAdd);
-            return true;
+            try {
+                float parsedWeight = Float.parseFloat(weight);
+                CargoOnBoard cargoOnBoardToAdd = new CargoOnBoard();
+                cargoOnBoardToAdd.setFlightId(flightId);
+                cargoOnBoardToAdd.setCargoCompartment(cargoCompartment);
+                cargoOnBoardToAdd.setDescription(description);
+                cargoOnBoardToAdd.setWeight(parsedWeight);
+                repository.save(cargoOnBoardToAdd);
+                return true;
+            } catch (NumberFormatException e) {
+                System.out.println("\nWeight should be a number! " + e);
+                return false;
+            }
         } else {
             return false;
         }
@@ -50,15 +56,19 @@ public class CargoOnBoardController {
                                                @PathVariable("flightId") long flightId,
                                                @PathVariable("cargoCompartment") String cargoCompartment,
                                                @PathVariable("description") String description,
-                                               @PathVariable("weight") float weight) {
-
-        CargoOnBoard cargoOnBoardToUpdate = repository.getOne(id);
-        cargoOnBoardToUpdate.setFlightId(flightId);
-        cargoOnBoardToUpdate.setCargoCompartment(cargoCompartment);
-        cargoOnBoardToUpdate.setDescription(description);
-        cargoOnBoardToUpdate.setWeight(weight);
-        repository.save(cargoOnBoardToUpdate);
-
+                                               @PathVariable("weight") String weight) {
+        try {
+            float parsedWeight = Float.parseFloat(weight);
+            CargoOnBoard cargoOnBoardToUpdate = repository.getOne(id);
+            cargoOnBoardToUpdate.setFlightId(flightId);
+            cargoOnBoardToUpdate.setCargoCompartment(cargoCompartment);
+            cargoOnBoardToUpdate.setDescription(description);
+            cargoOnBoardToUpdate.setWeight(parsedWeight);
+            repository.save(cargoOnBoardToUpdate);
+            return repository.findOne(id);
+        } catch (NumberFormatException e) {
+            System.out.println("Weight should be a number!" + e);
+        }
         return repository.findOne(id);
     }
 
