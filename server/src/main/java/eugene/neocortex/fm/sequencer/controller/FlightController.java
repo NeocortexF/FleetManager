@@ -35,7 +35,6 @@ public class FlightController {
         return new ResponseEntity(flight, HttpStatus.OK);
     }
 
-
     @RequestMapping(value = "flight/delete/{id}")
     @ResponseBody
     public boolean removeFlight(@PathVariable("id") long id) {

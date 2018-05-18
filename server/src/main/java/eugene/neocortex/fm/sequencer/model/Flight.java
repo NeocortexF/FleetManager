@@ -27,19 +27,19 @@ public class Flight {
 
     private String tailNumber; //TODO: связка со словарем
 
-    private String departureAirport; //TODO: связка со словарем
+    private String departureAirport; //TODO: связка со словарем на фронте
 
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")  //TODO: UTC time
     private Date departureTime;
 
-    private String arrivalAirport; //TODO: связка со словарем
+    private String arrivalAirport; //TODO: связка со словарем на фронте
 
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     private Date arrivalTime;
 
-    private String captain;  //TODO: должен быть айди капитана и дергаться из справочника
+    private String captain;  //TODO: должен быть айди капитана и дергаться из справочника на фронте
 
-    private String firstOfficer; //TODO: должен быть айди ВП и дергаться из справочника
+    private String firstOfficer; //TODO: должен быть айди ВП и дергаться из справочника на фронте
 
     private String flightNumber;
 
