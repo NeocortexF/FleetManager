@@ -34,9 +34,9 @@ public class Flight {
 
     private Date arrivalTime;
 
-    private String captain;
+    private String captain;  //TODO: должен быть айди капитана и дергаться из справочника
 
-    private String firstOfficer;
+    private String firstOfficer; //TODO: должен быть айди ВП и дергаться из справочника
 
     private String flightNumber;
 
