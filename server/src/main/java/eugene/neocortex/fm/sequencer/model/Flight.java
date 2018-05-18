@@ -29,7 +29,7 @@ public class Flight {
 
     private String departureAirport;
 
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")  //TODO: UTC time
     private Date departureTime;
 
     private String arrivalAirport;
