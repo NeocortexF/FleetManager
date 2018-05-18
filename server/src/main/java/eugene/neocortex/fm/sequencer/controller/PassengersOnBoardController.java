@@ -17,14 +17,14 @@ public class PassengersOnBoardController {
         this.repository = repository;
     }
 
-    @RequestMapping(value = "passenger/byFlightId/{flightId}")
+    @RequestMapping(value = "pass/byFlightId/{flightId}")
     @ResponseBody
     public Collection<PassengersOnBoard> findAllPassengersOnBoardByFlightId(
             @PathVariable("flightId") Long id) {
         return repository.findAllByFlightId(id);
     }
 
-    @RequestMapping(value = "passenger/add/{flightId}/{name}/{place}")
+    @RequestMapping(value = "pass/add/{flightId}/{name}/{place}")
     @ResponseBody
     public Boolean addPassengerToFlight(@PathVariable("flightId") Long flightId,
                                            @PathVariable("name") String name,
@@ -42,7 +42,7 @@ public class PassengersOnBoardController {
         }
     }
 
-    @RequestMapping(value = "passenger/update/{id}/{flightId}/{name}/{place}")
+    @RequestMapping(value = "pass/update/{id}/{flightId}/{name}/{place}")
     @ResponseBody
     public PassengersOnBoard updatePassengerOnBoardById(@PathVariable("id") long id,
                                                @PathVariable("flightId") Long flightId,
@@ -58,7 +58,7 @@ public class PassengersOnBoardController {
         return repository.findOne(id);
     }
 
-    @RequestMapping(value = "passenger/delete/{id}")
+    @RequestMapping(value = "pass/delete/{id}")
     @ResponseBody
     public boolean removePassengerOnBoardById(@PathVariable("id") long id) {
         if (repository.exists(id)) {
