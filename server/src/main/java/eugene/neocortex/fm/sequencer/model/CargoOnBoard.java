@@ -33,7 +33,7 @@ public class CargoOnBoard {
     public CargoOnBoard() {
     }
 
-    public CargoOnBoard(long flightId, String cargoCompartment, String description, float weight) {
+    public CargoOnBoard(long flightId, String cargoCompartment, String description, int weight) {
         this.flightId = flightId;
         this.cargoCompartment = cargoCompartment;
         this.description = description;

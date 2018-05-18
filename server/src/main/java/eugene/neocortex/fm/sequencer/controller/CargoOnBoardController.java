@@ -29,22 +29,16 @@ public class CargoOnBoardController {
     public Boolean addCargoOnBoardToFlight(@PathVariable("flightId") Long flightId,
                                            @PathVariable("cargoCompartment") String cargoCompartment,
                                            @PathVariable("description") String description,
-                                           @PathVariable("weight") String weight) {
+                                           @PathVariable("weight") Integer weight) {
 
         if (flightId != null) {
-            try {
-                float parsedWeight = Float.parseFloat(weight);
-                CargoOnBoard cargoOnBoardToAdd = new CargoOnBoard();
-                cargoOnBoardToAdd.setFlightId(flightId);
-                cargoOnBoardToAdd.setCargoCompartment(cargoCompartment);
-                cargoOnBoardToAdd.setDescription(description);
-                cargoOnBoardToAdd.setWeight(parsedWeight);
-                repository.save(cargoOnBoardToAdd);
-                return true;
-            } catch (NumberFormatException e) {
-                System.out.println("\nWeight should be a number! " + e);
-                return false;
-            }
+            CargoOnBoard cargoOnBoardToAdd = new CargoOnBoard();
+            cargoOnBoardToAdd.setFlightId(flightId);
+            cargoOnBoardToAdd.setCargoCompartment(cargoCompartment);
+            cargoOnBoardToAdd.setDescription(description);
+            cargoOnBoardToAdd.setWeight(weight);
+            repository.save(cargoOnBoardToAdd);
+            return true;
         } else {
             return false;
         }
