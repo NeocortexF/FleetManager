@@ -25,14 +25,14 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    private String tailNumber;
+    private String tailNumber; //TODO: связка со словарем
 
-    private String departureAirport;
+    private String departureAirport; //TODO: связка со словарем
 
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")  //TODO: UTC time
     private Date departureTime;
 
-    private String arrivalAirport;
+    private String arrivalAirport; //TODO: связка со словарем
 
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     private Date arrivalTime;
