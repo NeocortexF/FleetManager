@@ -30,7 +30,7 @@ public class FlightController {
 
 
     @PostMapping(value = "flight/save")
-    public ResponseEntity createDeadline(@RequestBody Flight flight) {
+    public ResponseEntity createFlight(@RequestBody Flight flight) {
         repository.save(flight);
         return new ResponseEntity(flight, HttpStatus.OK);
     }
