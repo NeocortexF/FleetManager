@@ -1,6 +1,7 @@
 package eugene.neocortex.fm.sequencer.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Entity;
@@ -28,10 +29,12 @@ public class Flight {
 
     private String departureAirport;
 
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     private Date departureTime;
 
     private String arrivalAirport;
 
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     private Date arrivalTime;
 
     private String captain;  //TODO: должен быть айди капитана и дергаться из справочника
