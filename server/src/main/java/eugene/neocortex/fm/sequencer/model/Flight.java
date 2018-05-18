@@ -38,6 +38,9 @@ public class Flight {
 
     private String firstOfficer;
 
+    private String flightNumber;
+
+
     //тоже самое должен быть метод, а не в моделе
     // дернет по АйДи полета findAllCrewByFlightId
     //private ArrayList<String> cabinCrewOnBoard;
@@ -52,7 +55,8 @@ public class Flight {
     }
 
     public Flight(String tailNumber, String departureAirport, Date departureTime,
-                  String arrivalAirport, Date arrivalTime, String captain, String firstOfficer) {
+                  String arrivalAirport, Date arrivalTime, String captain,
+                  String firstOfficer, String flightNumber) {
         this.tailNumber = tailNumber;
         this.departureAirport = departureAirport;
         this.departureTime = departureTime;
@@ -60,6 +64,7 @@ public class Flight {
         this.arrivalTime = arrivalTime;
         this.captain = captain;
         this.firstOfficer = firstOfficer;
+        this.flightNumber = flightNumber;
     }
 
     public long getId() {
@@ -126,6 +131,14 @@ public class Flight {
         this.firstOfficer = firstOfficer;
     }
 
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
     @Override
     public String toString() {
         return "Flight{" +
@@ -137,6 +150,7 @@ public class Flight {
                 ", arrivalTime=" + arrivalTime +
                 ", captain='" + captain + '\'' +
                 ", firstOfficer='" + firstOfficer + '\'' +
+                ", flightNumber='" + flightNumber + '\'' +
                 '}';
     }
 }
