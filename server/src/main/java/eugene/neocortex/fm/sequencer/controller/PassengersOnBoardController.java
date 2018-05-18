@@ -27,8 +27,8 @@ public class PassengersOnBoardController {
     @RequestMapping(value = "pass/add/{flightId}/{name}/{place}")
     @ResponseBody
     public Boolean addPassengerToFlight(@PathVariable("flightId") Long flightId,
-                                           @PathVariable("name") String name,
-                                           @PathVariable("place") String place) {
+                                        @PathVariable("name") String name,
+                                        @PathVariable("place") String place) {
 
         if (flightId != null) {
             PassengersOnBoard passengersOnBoardToAdd = new PassengersOnBoard();
@@ -45,9 +45,9 @@ public class PassengersOnBoardController {
     @RequestMapping(value = "pass/update/{id}/{flightId}/{name}/{place}")
     @ResponseBody
     public PassengersOnBoard updatePassengerOnBoardById(@PathVariable("id") long id,
-                                               @PathVariable("flightId") Long flightId,
-                                               @PathVariable("name") String name,
-                                               @PathVariable("place") String place) {
+                                                        @PathVariable("flightId") Long flightId,
+                                                        @PathVariable("name") String name,
+                                                        @PathVariable("place") String place) {
 
         PassengersOnBoard cargoOnBoardToUpdate = repository.getOne(id);
         cargoOnBoardToUpdate.setFlightId(flightId);
