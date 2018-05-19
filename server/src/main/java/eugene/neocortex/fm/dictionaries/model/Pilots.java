@@ -21,16 +21,16 @@ public class Pilots {
 
     private String name;
 
-    private String postion;
+    private String position;
 
     private byte squadron;
 
     public Pilots() {
     }
 
-    public Pilots(String name, String postion, byte squadron) {
+    public Pilots(String name, String position, byte squadron) {
         this.name = name;
-        this.postion = postion;
+        this.position = position;
         this.squadron = squadron;
     }
 
@@ -51,11 +51,11 @@ public class Pilots {
     }
 
     public String getPostion() {
-        return postion;
+        return position;
     }
 
     public void setPostion(String postion) {
-        this.postion = postion;
+        this.position = postion;
     }
 
     public byte getSquadron() {
@@ -71,7 +71,7 @@ public class Pilots {
         return "Pilots{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", postion='" + postion + '\'' +
+                ", position='" + position + '\'' +
                 ", squadron=" + squadron +
                 '}';
     }
