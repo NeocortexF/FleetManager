@@ -44,9 +44,9 @@ public class PilotsController {
     @RequestMapping(value = "pilots/update/{id}/{name}/{position}/{squadron}")
     @ResponseBody
     public Pilots updatePilotById(@PathVariable("id") long id,
-                                    @PathVariable("name") String name,
-                                    @PathVariable("position") String position,
-                                    @PathVariable("squadron") Byte squadron) {
+                                  @PathVariable("name") String name,
+                                  @PathVariable("position") String position,
+                                  @PathVariable("squadron") Byte squadron) {
 
         Pilots pilotToUpdate = repository.getOne(id);
         pilotToUpdate.setName(name);
@@ -73,14 +73,14 @@ public class PilotsController {
     @RequestMapping(value = "pilots/add/{name}/{position}/{squadron}")
     @ResponseBody
     public Boolean addPilot(@PathVariable("name") String name,
-                               @PathVariable("position") String position,
-                               @PathVariable("squadron") Byte squadron) {
+                            @PathVariable("position") String position,
+                            @PathVariable("squadron") Byte squadron) {
 
-            Pilots pilotToAdd = new Pilots();
-            pilotToAdd.setName(name);
-            pilotToAdd.setPosition(position);
-            pilotToAdd.setSquadron(squadron);
-            repository.save(pilotToAdd);
-            return true;
+        Pilots pilotToAdd = new Pilots();
+        pilotToAdd.setName(name);
+        pilotToAdd.setPosition(position);
+        pilotToAdd.setSquadron(squadron);
+        repository.save(pilotToAdd);
+        return true;
     }
 }
