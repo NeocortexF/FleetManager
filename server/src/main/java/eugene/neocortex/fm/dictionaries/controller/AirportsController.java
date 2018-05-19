@@ -41,20 +41,16 @@ public class AirportsController {
     }
 
 
-    @RequestMapping(value = "airports/update/{id}/{tailNumber}/{modification}/{engineType}/{msn}")
+    @RequestMapping(value = "airports/update/{id}/{name}/{codeICAO}")
     @ResponseBody
     public Airports updateAirportById(@PathVariable("id") long id,
-                                      @PathVariable("tailNumber") String tailNumber,
-                                      @PathVariable("modification") String modification,
-                                      @PathVariable("engineType") String engineType,
-                                      @PathVariable("msn") Integer msn) {
+                                      @PathVariable("name") String name,
+                                      @PathVariable("codeICAO") String codeICAO) {
 
-        Airports aircraftToUpdate = repository.getOne(id);
-        aircraftToUpdate.setTailNumber(tailNumber);
-        aircraftToUpdate.setModification(modification);
-        aircraftToUpdate.setEngineType(engineType);
-        aircraftToUpdate.setMsn(msn);
-        repository.save(aircraftToUpdate);
+        Airports airportToUpdate = repository.getOne(id);
+        airportToUpdate.setName(name);
+        airportToUpdate.setCodeICAO(codeICAO);
+        repository.save(airportToUpdate);
 
         return repository.findOne(id);
     }
@@ -72,23 +68,16 @@ public class AirportsController {
     }
 
 
-    @RequestMapping(value = "fleet/add/{tailNumber}/{modification}/{engineType}/{msn}")
+    @RequestMapping(value = "airports/add/{name}/{codeICAO}")
     @ResponseBody
-    public Boolean addAirport(@PathVariable("tailNumber") String tailNumber,
-                              @PathVariable("modification") String modification,
-                              @PathVariable("engineType") String engineType,
-                              @PathVariable("msn") Integer msn) {
+    public Boolean addAirport(@PathVariable("name") String name,
+                              @PathVariable("codeICAO") String codeICAO) {
 
-        if (tailNumber != null && !tailNumber.isEmpty()) {
-            Airports aircraftToSave = new Airports();
-            aircraftToSave.setTailNumber(tailNumber);
-            aircraftToSave.setModification(modification);
-            aircraftToSave.setEngineType(engineType);
-            aircraftToSave.setMsn(msn);
-            repository.save(aircraftToSave);
-            return true;
-        } else {
-            return false;
-        }
+        Airports airportToSave = new Airports();
+        airportToSave.setName(name);
+        airportToSave.setCodeICAO(codeICAO);
+        repository.save(airportToSave);
+
+        return true;
     }
 }
