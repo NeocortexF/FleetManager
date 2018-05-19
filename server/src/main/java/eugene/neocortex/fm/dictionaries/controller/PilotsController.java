@@ -50,7 +50,7 @@ public class PilotsController {
 
         Pilots pilotToUpdate = repository.getOne(id);
         pilotToUpdate.setName(name);
-        pilotToUpdate.setPostion(position);
+        pilotToUpdate.setPosition(position);
         pilotToUpdate.setSquadron(squadron);
         repository.save(pilotToUpdate);
 
