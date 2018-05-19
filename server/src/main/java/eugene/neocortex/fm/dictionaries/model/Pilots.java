@@ -50,12 +50,12 @@ public class Pilots {
         this.name = name;
     }
 
-    public String getPostion() {
+    public String getPosition() {
         return position;
     }
 
-    public void setPostion(String postion) {
-        this.position = postion;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public byte getSquadron() {

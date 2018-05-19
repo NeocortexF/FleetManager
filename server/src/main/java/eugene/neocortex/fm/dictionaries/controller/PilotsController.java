@@ -78,7 +78,7 @@ public class PilotsController {
 
             Pilots pilotToAdd = new Pilots();
             pilotToAdd.setName(name);
-            pilotToAdd.setPostion(position);
+            pilotToAdd.setPosition(position);
             pilotToAdd.setSquadron(squadron);
             repository.save(pilotToAdd);
             return true;
