@@ -27,7 +27,7 @@ public class PilotsController {
         return repository.findOne(id);
     }
 
-
+    //TODO: не находит имя если в строке пробелы с точками, например имя фамилия
     @RequestMapping(value = "pilots/byName/{name}")
     @ResponseBody
     public Pilots findPilotByName(@PathVariable("name") String name) {
