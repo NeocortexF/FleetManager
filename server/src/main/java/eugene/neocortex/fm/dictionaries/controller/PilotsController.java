@@ -3,6 +3,8 @@ package eugene.neocortex.fm.dictionaries.controller;
 
 import eugene.neocortex.fm.dictionaries.PilotsRepository;
 import eugene.neocortex.fm.dictionaries.model.Pilots;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -27,13 +29,11 @@ public class PilotsController {
         return repository.findOne(id);
     }
 
-    //TODO: не находит имя если в строке пробелы с точками, например имя фамилия
-    @RequestMapping(value = "pilots/byName/{name}")
-    @ResponseBody
-    public Pilots findPilotByName(@PathVariable("name") String name) {
-        return repository.findByName(name);
+    @PostMapping(value = "pilots/byName")
+    public ResponseEntity findPilotByName(@RequestBody Pilots pilots) {
+        Pilots byName = repository.findByName(pilots.getName());
+        return new ResponseEntity(byName, HttpStatus.OK);
     }
-
 
     @RequestMapping(value = "pilots/allBySquad/{squad}")
     @ResponseBody
