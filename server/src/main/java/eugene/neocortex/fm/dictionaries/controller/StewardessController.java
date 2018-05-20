@@ -2,6 +2,8 @@ package eugene.neocortex.fm.dictionaries.controller;
 
 import eugene.neocortex.fm.dictionaries.StewardessRepository;
 import eugene.neocortex.fm.dictionaries.model.Stewardess;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -27,12 +29,11 @@ public class StewardessController {
     }
 
 
-    @RequestMapping(value = "stewardess/byName/{name}")
-    @ResponseBody
-    public Stewardess findStewardessByName(@PathVariable("name") String name) {
-        return repository.findByName(name);
+    @PostMapping(value = "stewardess/byName")
+    public ResponseEntity createFlight(@RequestBody Stewardess stewardess) {
+        Stewardess byName = repository.findByName(stewardess.getName());
+        return new ResponseEntity(byName, HttpStatus.OK);
     }
-
 
     @RequestMapping(value = "stewardess/allByBrigade/{brigade}")
     @ResponseBody
