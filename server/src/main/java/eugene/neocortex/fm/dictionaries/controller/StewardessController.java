@@ -30,7 +30,7 @@ public class StewardessController {
 
 
     @PostMapping(value = "stewardess/byName")
-    public ResponseEntity createFlight(@RequestBody Stewardess stewardess) {
+    public ResponseEntity findStewardessByName(@RequestBody Stewardess stewardess) {
         Stewardess byName = repository.findByName(stewardess.getName());
         return new ResponseEntity(byName, HttpStatus.OK);
     }
