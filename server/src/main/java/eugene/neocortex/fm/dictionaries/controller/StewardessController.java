@@ -40,7 +40,7 @@ public class StewardessController {
         return repository.findAllByBrigade(brigade);
     }
 
-    @RequestMapping(value = "stewardess/update/{id}/{name}/{position}/{squadron}")
+    @RequestMapping(value = "stewardess/update/{id}/{name}/{position}/{brigade}")
     @ResponseBody
     public Stewardess updateStewardessById(@PathVariable("id") long id,
                                            @PathVariable("name") String name,
