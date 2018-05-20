@@ -34,9 +34,9 @@ public class StewardessController {
     }
 
 
-    @RequestMapping(value = "stewardess/allBySquad/{squad}")
+    @RequestMapping(value = "stewardess/allByBrigade/{brigade}")
     @ResponseBody
-    public Collection<Stewardess> findStewardessByBrigade(@PathVariable("squad") Byte brigade) {
+    public Collection<Stewardess> findStewardessByBrigade(@PathVariable("brigade") Byte brigade) {
         return repository.findAllByBrigade(brigade);
     }
 
