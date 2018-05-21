@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 @RestController
 public class PilotsController {
@@ -17,7 +18,15 @@ public class PilotsController {
         this.repository = repository;
     }
 
+//    @GetMapping("beer/pilots/all")  //если взорвется то вернуть на мапинг /good-beers
+//    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5000"})
+//    public Collection<Pilots> goodBeers() {
+//        return repository.findAll().stream()
+//                .collect(Collectors.toList());
+//    }
+
     @GetMapping("pilots/all")
+    @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5000"})
     public Collection<Pilots> getAllPilots() {
         return repository.findAll();
     }
