@@ -15,16 +15,23 @@ class RegistrationForm extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleSubmit() {
-		console.log('Form is submitted');
+	handleSubmit(event) {
+		//для того что бы по нажатию на enter после ввода страница не перезагружалась
+		event.preventDefault();
+
+		console.log('Form is submitted. E-mail value is', this.state.email);
 	}
 
 	//что бы this нашего класса был доступен в нашей функции его нужно прибиндить,
 	//для этого прибиндим его в конструкторе
-	handleEmailChange() {
-		console.log('E-mail was changed', this);
+	//event это событие нашего ввода, в котором содежрится значение value
+	handleEmailChange(event) {
+		console.log('E-mail was changed', event.target.value);
+		this.setState({email: event.target.value});
 	}
 
+	//у button по умолчанию тип submit, поэтому вызывается submit формы
+	//onSubmit={this.handleSubmit} который дергает функцию handleSubmit
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit}>
@@ -34,6 +41,7 @@ class RegistrationForm extends Component {
 					value={this.state.email}
 					onChange={this.handleEmailChange}
 				/>
+				<button>Save</button>
 			</form>
 			);
 	}
